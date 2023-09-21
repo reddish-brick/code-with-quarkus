@@ -1,0 +1,11 @@
+version: "3.9"
+
+services:
+  quarkus-demo-db:
+    image: 'mysql:8.0.33-oracle'
+    environment:
+      MYSQL_DATABASE: quarkus
+      MYSQL_ROOT_PASSWORD: 1234567
+    ports:
+      - '3366:3306'
+    command: ['mysqld', '--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci']
