@@ -5,6 +5,7 @@ import com.tmh.practice.service.UserService;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.GET;
+import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
@@ -32,7 +33,7 @@ public class UserResource {
     return Response.ok(userService.getByPhone(phone)).build();
   }
 
-  @jakarta.ws.rs.POST
+  @POST
   @Path("/save")
   @Consumes(MediaType.APPLICATION_JSON)
   public User saveUser(User user) {

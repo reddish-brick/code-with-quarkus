@@ -7,6 +7,7 @@ import io.quarkus.jackson.ObjectMapperCustomizer;
 import jakarta.inject.Singleton;
 
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 @Singleton
@@ -16,7 +17,7 @@ public class RegisterCustomModuleCustomizer implements ObjectMapperCustomizer {
     JavaTimeModule module = new JavaTimeModule();
     DateSerializer dateSerializer = new DateSerializer(false,
         new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"));
-    module.addSerializer(java.util.Date.class, dateSerializer);
+    module.addSerializer(Date.class, dateSerializer);
     mapper.registerModule(module);
   }
 }

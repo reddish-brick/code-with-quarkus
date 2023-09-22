@@ -1,6 +1,7 @@
 package com.tmh.practice.service;
 
 import com.tmh.practice.dao.UserRepository;
+import com.tmh.practice.entity.User;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
@@ -13,16 +14,16 @@ public class UserService {
   @Inject
   UserRepository userRepository;
 
-  public List<com.tmh.practice.entity.User> getAll() {
+  public List<User> getAll() {
     return userRepository.listAll();
   }
 
-  public com.tmh.practice.entity.User getByPhone(String phone) {
+  public User getByPhone(String phone) {
     return userRepository.find("phone", phone).firstResult();
   }
 
   @Transactional
-  public com.tmh.practice.entity.User saveUser(com.tmh.practice.entity.User user) {
+  public User saveUser(com.tmh.practice.entity.User user) {
     // 通过手机号查询，如果存在则更新name，否则新增
     com.tmh.practice.entity.User persistUser = getByPhone(user.getPhone());
     if (persistUser == null) {
